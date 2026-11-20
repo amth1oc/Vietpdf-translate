@@ -53,7 +53,7 @@ dev = [
 # Chỉ dùng trong release.yml (đóng gói + SBOM); khoá trong uv.lock như mọi phụ thuộc khác.
 build = [
     "pyinstaller>=6.11,<7",
-    "cyclonedx-bom>=5,<8",
+    "cyclonedx-bom>=5,<9",
 ]
 
 [build-system]
