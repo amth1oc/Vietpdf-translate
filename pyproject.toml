@@ -31,9 +31,9 @@ gui = ["pyside6-essentials>=6.8,<7"]
 # OCR trang scan: mô hình PP-OCR ONNX nằm sẵn trong gói rapidocr (khoá hash trong uv.lock)
 # onnxruntime < 1.29: từ 1.29 bản PyPI nhúng telemetry OneDS (gửi tới mobile.events.data.microsoft.com), không tắt
 # được bằng API (kiểm toán 2.1.1, L1-007). Chỉ nâng cận trên sau khi kiểm lại bản mới không còn telemetry mạng.
-ocr = ["rapidocr>=3.10,<4", "onnxruntime>=1.20,<1.29"]
+ocr = ["rapidocr>=3.10,<4", "onnxruntime>=1.20,<1.32"]
 # Nhận diện bố cục bằng DocLayout-YOLO ONNX (mô hình tải riêng bằng scripts/fetch_models.py, ghim SHA-256)
-layout = ["onnxruntime>=1.20,<1.29", "numpy>=1.26,<3"]
+layout = ["onnxruntime>=1.20,<1.32", "numpy>=1.26,<3"]
 
 [project.scripts]
 vietpdf = "vietpdf.cli:main"
