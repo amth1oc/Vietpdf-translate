@@ -16,7 +16,7 @@ classifiers = [
 # Mỗi phụ thuộc mới phải được review (xem CONTRIBUTING.md).
 dependencies = [
     # 1.28.x không có phụ thuộc con; 2.x kéo thêm onnxruntime/networkx/pyyaml... -> review riêng.
-    "pymupdf>=1.28.2,<2",
+    "pymupdf>=1.28.2,<3",
     "httpx>=0.28,<0.29",
     "pydantic>=2.10,<3",
     "keyring>=25,<26",
