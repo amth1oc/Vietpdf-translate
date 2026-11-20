@@ -1,0 +1,13 @@
+# Các vùng nhạy cảm bảo mật cần người duy trì duyệt (bật "Require review from Code Owners" ở branch protection).
+# Thay @vietpdf-maintainers bằng tài khoản/nhóm thật (tối thiểu 2 người). 2.1.2: CHƯA làm — cần chủ dự án cung cấp
+# tên người duyệt; job `preflight` của release.yml chặn phát hành chừng nào còn nhóm giữ chỗ này.
+/src/vietpdf/security/      @vietpdf-maintainers
+/src/vietpdf/core/sandbox.py @vietpdf-maintainers
+/src/vietpdf/core/confine.py @vietpdf-maintainers
+/build-constraints.txt       @vietpdf-maintainers
+/src/vietpdf/assets/        @vietpdf-maintainers
+/scripts/                   @vietpdf-maintainers
+/.github/                   @vietpdf-maintainers
+/pyproject.toml             @vietpdf-maintainers
+/uv.lock                    @vietpdf-maintainers
+/packaging/                 @vietpdf-maintainers

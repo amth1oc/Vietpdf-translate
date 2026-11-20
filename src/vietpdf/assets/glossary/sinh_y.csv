@@ -1,0 +1,27 @@
+english,vietnamese,ghi_chu,chinh_sach
+randomized controlled trial,thử nghiệm ngẫu nhiên có đối chứng,,translate
+placebo,giả dược,,translate
+cohort study,nghiên cứu thuần tập,,translate
+case-control study,nghiên cứu bệnh – chứng,,translate
+prevalence,tỷ lệ hiện mắc,,translate
+incidence,tỷ lệ mới mắc,,translate
+mortality,tỷ lệ tử vong,,translate
+odds ratio,tỷ số chênh,,translate
+relative risk,nguy cơ tương đối,,translate
+sensitivity,độ nhạy,y học,translate
+specificity,độ đặc hiệu,y học,translate
+diagnosis,chẩn đoán,,translate
+prognosis,tiên lượng,,translate
+adverse event,biến cố bất lợi,,translate
+dose,liều,,translate
+gene expression,biểu hiện gen,,translate
+protein,protein,,keep
+DNA,DNA,,keep
+RNA,RNA,,keep
+cell membrane,màng tế bào,,translate
+immune response,đáp ứng miễn dịch,,translate
+antibody,kháng thể,,translate
+antigen,kháng nguyên,,translate
+pathogen,mầm bệnh,,translate
+enzyme,enzyme,,keep
+metabolism,chuyển hoá,,translate

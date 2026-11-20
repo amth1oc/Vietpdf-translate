@@ -1,0 +1,23 @@
+VietPDF Translate
+Copyright (C) 2026 VietPDF Translate contributors
+Phát hành theo GNU Affero General Public License v3.0 trở lên (xem LICENSE).
+
+Ý tưởng kiến trúc tham khảo (không sao chép mã nguồn):
+- PDFMathTranslate / PDFMathTranslate-next (AGPL-3.0) — https://github.com/PDFMathTranslate
+- BabelDOC (AGPL-3.0) — https://github.com/funstory-ai/BabelDOC
+  Các ngưỡng khởi điểm (gom dòng, ngưỡng co chữ) lấy theo tài liệu mô tả của BabelDOC.
+
+Thành phần bên thứ ba được đóng gói:
+- Noto Serif, Noto Sans, Noto Sans Mono — Copyright 2022 The Noto Project Authors,
+  SIL Open Font License 1.1 (src/vietpdf/assets/fonts/OFL.txt).
+  Nguồn: https://github.com/notofonts/latin-greek-cyrillic (NotoSerif-v2.015, NotoSans-v2.015,
+  NotoSansMono-v2.014), bản "unhinted/ttf". Checksum: src/vietpdf/assets/SHA256SUMS.
+
+Thư viện phụ thuộc (không đóng gói trong mã nguồn; cài qua PyPI, khoá phiên bản bằng uv.lock):
+- PyMuPDF (AGPL-3.0), httpx (BSD-3), pydantic (MIT), keyring (MIT), psutil (BSD-3), cryptography (Apache-2.0/BSD).
+- Tuỳ chọn: PySide6 (LGPL-3.0), RapidOCR + mô hình PP-OCR ONNX (Apache-2.0), onnxruntime (MIT), numpy (BSD-3).
+
+Phương pháp tham khảo (không sao chép mã):
+- S. Keshav, "How to Read a Paper" — phương pháp đọc 3 lượt cho trợ lý đọc.
+- PaperQA2 (future-house/paper-qa) — ý tưởng kiểm tra trích dẫn có thật trong hỏi đáp.
+- XY-cut (Nagy & Seth) — thuật toán thứ tự đọc.

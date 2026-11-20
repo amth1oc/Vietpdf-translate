@@ -1,0 +1,11 @@
+{
+  "_comment": "SHA-256 ghim cho mô hình tải riêng. Để trống = chưa duyệt -> ứng dụng TỪ CHỐI nạp. Điền sau khi tự tải và kiểm tra nguồn (xem docs/v1.0.md).",
+  "models": {
+    "doclayout-yolo-docstructbench": {
+      "file": "doclayout_yolo_docstructbench_imgsz1024.onnx",
+      "url": "https://huggingface.co/wybxc/DocLayout-YOLO-DocStructBench-onnx",
+      "license": "Kiểm tra giấy phép trọng số trên trang mô hình trước khi đóng gói/phân phối",
+      "sha256": ""
+    }
+  }
+}

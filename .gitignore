@@ -1,0 +1,30 @@
+# Bí mật — KHÔNG BAO GIỜ commit
+*.env
+.env*
+config.local.*
+*.key
+*.pem
+secrets.*
+# ...nhưng KHÔNG bỏ qua mã nguồn quản lý bí mật (2.1.1: mẫu trên từng che mất file này khỏi git status)
+!src/vietpdf/security/secrets.py
+
+# Python / build
+__pycache__/
+*.py[cod]
+.venv/
+build/
+dist/
+*.egg-info/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+requirements.lock.txt
+
+# Đầu ra dịch & dữ liệu người dùng
+*.vi.pdf
+*.dual.pdf
+*.ir.json
+*.sqlite3
+*.tmp.pdf
+dist-check/
+.vietpdf-stage-*/

@@ -1,0 +1,105 @@
+# CI chạy ở mọi push và pull request.
+# Bảo mật: mọi action ghim theo commit SHA (không theo tag), quyền tối thiểu, không dùng pull_request_target,
+# không lưu credential của git sau khi checkout.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      UV_NO_SYNC: "1"  # `uv run` không tự đồng bộ lại (sẽ build dự án bằng hatchling KHÔNG có hash)
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          python-version: "3.12"
+      - name: Cài đặt đúng theo uv.lock (có hash); build backend hatchling có hash (L1-024)
+        run: |
+          uv sync --locked --all-groups --no-install-project
+          uv pip install --require-hashes -r build-constraints.txt
+          uv pip install --no-deps --no-build-isolation .
+      - name: Build wheel với build backend có hash — hash lệch thì CI thất bại (L1-024)
+        run: uv build --build-constraints build-constraints.txt --require-hashes --wheel --out-dir dist-check
+      - name: Kiểm tra chống mã độc / cửa hậu (AST) — cả mã test
+        run: uv run python scripts/security_audit.py src scripts tests
+      - name: Cú pháp + chính sách workflow GitHub Actions
+        run: uv run python scripts/check_workflows.py
+      - name: Ruff (gồm luật bảo mật flake8-bandit)
+        run: |
+          uv run ruff check src tests scripts
+          uv run ruff format --check src tests scripts
+      - name: Mypy (strict)
+        run: uv run mypy
+      - name: Lỗ hổng đã biết trong phụ thuộc
+        run: |
+          uv export --frozen --no-dev --no-emit-project --format requirements-txt > requirements.lock.txt
+          uv run pip-audit -r requirements.lock.txt --disable-pip --strict
+      - name: Checksum tài nguyên đóng gói
+        run: uv run vietpdf verify-assets
+
+  secrets-scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Quét bí mật bị lộ trong lịch sử git (gitleaks, ghim phiên bản + SHA-256)
+        env:
+          GITLEAKS_VERSION: "8.30.1"
+          GITLEAKS_SHA256: "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb"
+        run: |
+          curl -sSfL -o gitleaks.tgz \
+            "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          echo "${GITLEAKS_SHA256}  gitleaks.tgz" | sha256sum --check --strict
+          tar -xzf gitleaks.tgz gitleaks
+          ./gitleaks detect --source . --no-banner --redact --exit-code 1
+
+  test:
+    needs: lint-audit
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    env:
+      QT_QPA_PLATFORM: offscreen
+      UV_NO_SYNC: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          python-version: "3.12"
+      - name: Cài đặt đúng theo uv.lock (có hash); build backend hatchling có hash (L1-024)
+        run: |
+          uv sync --locked --all-groups --all-extras --no-install-project
+          uv pip install --require-hashes -r build-constraints.txt
+          uv pip install --no-deps --no-build-isolation .
+      - name: Pytest (translator giả, không gọi API)
+        run: uv run pytest -q
+      - name: Golden test PDF mẫu -> tải ảnh lên khi lỗi
+        if: failure()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: golden-${{ matrix.os }}
+          path: /tmp/pytest-of-*/**/*.pdf
+          retention-days: 7

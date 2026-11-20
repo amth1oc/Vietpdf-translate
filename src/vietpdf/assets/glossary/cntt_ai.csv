@@ -1,0 +1,42 @@
+english,vietnamese,ghi_chu,chinh_sach
+machine learning,học máy,,translate
+deep learning,học sâu,,translate
+neural network,mạng nơ-ron,,translate
+convolutional neural network,mạng nơ-ron tích chập,,translate
+recurrent neural network,mạng nơ-ron hồi quy,,translate
+overfitting,quá khớp,,translate
+underfitting,chưa khớp,,translate
+training set,tập huấn luyện,,translate
+validation set,tập kiểm định,,translate
+test set,tập kiểm tra,,translate
+loss function,hàm mất mát,,translate
+gradient descent,hạ gradient,,translate
+learning rate,tốc độ học,,translate
+batch size,kích thước lô,,translate
+fine-tuning,tinh chỉnh,,translate
+pretrained,huấn luyện sẵn,,translate
+encoder,bộ mã hoá,,translate
+decoder,bộ giải mã,,translate
+attention mechanism,cơ chế chú ý,,translate
+self-attention,tự chú ý,,translate
+embedding,biểu diễn nhúng,,translate
+inference,suy luận,trong ngữ cảnh chạy mô hình,translate
+benchmark,bộ đánh giá chuẩn,,translate
+baseline,phương pháp cơ sở,,translate
+ablation study,nghiên cứu loại bỏ thành phần,,translate
+hyperparameter,siêu tham số,,translate
+regularization,chính quy hoá,,translate
+reinforcement learning,học tăng cường,,translate
+supervised learning,học có giám sát,,translate
+unsupervised learning,học không giám sát,,translate
+large language model,mô hình ngôn ngữ lớn,,translate
+thread,luồng,CNTT,translate
+process,tiến trình,CNTT,translate
+compiler,trình biên dịch,,translate
+runtime,thời gian chạy,,translate
+cache,bộ nhớ đệm,,translate
+eigenvalue,giá trị riêng,Toán,translate
+eigenvector,vectơ riêng,Toán,translate
+API,API,,keep
+GPU,GPU,,keep
+Transformer,Transformer,kiến trúc mô hình,keep

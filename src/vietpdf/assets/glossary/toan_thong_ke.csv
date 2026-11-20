@@ -1,0 +1,36 @@
+english,vietnamese,ghi_chu,chinh_sach
+eigenvalue,giá trị riêng,,translate
+eigenvector,vectơ riêng,,translate
+matrix,ma trận,,translate
+vector space,không gian vectơ,,translate
+linear transformation,phép biến đổi tuyến tính,,translate
+derivative,đạo hàm,,translate
+partial derivative,đạo hàm riêng,,translate
+integral,tích phân,,translate
+gradient,gradient,,keep
+convex function,hàm lồi,,translate
+optimization,tối ưu hoá,,translate
+probability distribution,phân phối xác suất,,translate
+random variable,biến ngẫu nhiên,,translate
+expected value,giá trị kỳ vọng,,translate
+variance,phương sai,,translate
+standard deviation,độ lệch chuẩn,,translate
+covariance,hiệp phương sai,,translate
+correlation,tương quan,,translate
+hypothesis test,kiểm định giả thuyết,,translate
+null hypothesis,giả thuyết không,,translate
+confidence interval,khoảng tin cậy,,translate
+p-value,giá trị p,,translate
+regression,hồi quy,,translate
+linear regression,hồi quy tuyến tính,,translate
+maximum likelihood,hợp lý cực đại,,translate
+Bayesian inference,suy luận Bayes,,translate
+posterior distribution,phân phối hậu nghiệm,,translate
+prior distribution,phân phối tiên nghiệm,,translate
+sample size,cỡ mẫu,,translate
+theorem,định lý,,translate
+lemma,bổ đề,,translate
+corollary,hệ quả,,translate
+proof,chứng minh,,translate
+upper bound,cận trên,,translate
+lower bound,cận dưới,,translate
